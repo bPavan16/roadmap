@@ -37,4 +37,12 @@ const seniors = users.filter((user) => {
 
 console.log(seniors);
 
-// FILTER
+// REDUCE
+
+const nums2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const ans = nums2.reduce((sum, curr) => {
+  return sum + curr;
+}, 0);
+
+console.log(ans);
