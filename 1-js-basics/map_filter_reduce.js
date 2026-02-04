@@ -1,40 +1,40 @@
-// MAP 
+// MAP
 
 const users = [
   { name: "Pavan", age: 21 },
   { name: "Rahul", age: 22 },
-  {name : "Nischant", age:26},
-  {name : "Tharanesh", age:28},
+  { name: "Nischant", age: 26 },
+  { name: "Tharanesh", age: 28 },
 ];
 
-const names = users.map((user)=>{
-    return user.name
-})
+const names = users.map((user) => {
+  return user.name;
+});
 
-console.log(names)
+console.log(names);
 
-const nums = [1,2,3,4,5,6,7,8,9,10]
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-sqs = nums.map((num)=>{
-    return num*num
-})
+sqs = nums.map((num) => {
+  return num * num;
+});
 
-console.log(sqs)
+console.log(sqs);
 
-nums.map(n=>n*2)
+nums.map((n) => n * 2);
 
 // FILTER
 
-const even = nums.filter((num)=>{
-    return num%2==0
-})
+const even = nums.filter((num) => {
+  return num % 2 == 0;
+});
 
-console.log(even)
+console.log(even);
 
-const seniors = users.filter((user)=>{
-   return user.age>25
-})
+const seniors = users.filter((user) => {
+  return user.age > 25;
+});
 
-console.log(seniors)
+console.log(seniors);
 
 // FILTER

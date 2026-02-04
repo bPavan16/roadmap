@@ -1,4 +1,7 @@
+const greet = (name) => {
+  console.log(`Hello ${name}`);
+};
 
-const array_func = ()=>{
-    const hello = ""
-}
+greet("Pavan");
+greet("Nischnat");
+greet("Rahul");

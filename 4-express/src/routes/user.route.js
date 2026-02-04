@@ -1,13 +1,12 @@
-import express from 'express'
-import users from '../data/users.js'
+import express from "express";
 
-import { getAllUsers , getUserById} from '../controllers/user.controller.js'
+import { getAllUsers, getUserById } from "../controllers/user.controller.js";
 
-const router = express.Router()
+const router = express.Router();
 
+router.get("/", getAllUsers);
+router.get("/id/:id", getUserById);
+router.put("id/:id", updateUserById);
+router.delete("id/:id", deleteUserById);
 
-router.get("/",getAllUsers)
-
-router.get("/id/:id",getUserById)
-
-export default router
+export default router;
