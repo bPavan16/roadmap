@@ -1,8 +1,6 @@
 # Roadmap
 ## Completed Concepts
 
----
-
 ## JavaScript & Web Basics (Foundation)
 
 **Goal:**  
