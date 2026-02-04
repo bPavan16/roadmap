@@ -108,6 +108,7 @@ Persist data using a database.
 ### Deliverable
 - Backend APIs with database integration
 
+---
 
 ## React Fundamentals
 **Goal**: Build frontend UI confidently
