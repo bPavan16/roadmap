@@ -9,8 +9,6 @@ const __dirname = path.dirname(__filename);
 
 const server = http.createServer((req, res) => {
 
-
-
     if (req.url == '/data' && req.method == "GET") {
 
         const filePath = path.join(__dirname, "data.json");
