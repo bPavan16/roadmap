@@ -3,6 +3,7 @@ import { User } from "../models/index.js";
 import { generateToken } from "../service/token.service.js";
 
 export const register = async (req, res) => {
+    
   const { name, email, password } = req.body;
 
   const hashedPassword = await bcrypt.hash(password, 10);
