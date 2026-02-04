@@ -108,3 +108,21 @@ Persist data using a database.
 ### Deliverable
 - Backend APIs with database integration
 
+
+## React Fundamentals
+**Goal**: Build frontend UI confidently
+
+## Concepts
+- What React is
+- Components & JSX
+- Props & State
+- Event handling
+- Conditional rendering
+
+## Tasks
+- Create a React application
+- Build reusable components
+- Create forms and lists
+
+## Deliverable
+- React app with basic UI components
