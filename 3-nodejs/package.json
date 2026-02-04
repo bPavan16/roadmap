@@ -1,12 +1,13 @@
 {
-  "name": "js-basics",
+  "name": "3-nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "type":"module",
+  "main": "http-node.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
