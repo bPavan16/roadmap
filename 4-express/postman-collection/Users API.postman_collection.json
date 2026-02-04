@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "75422b7d-f5ad-460d-8c7f-3da1cc00495e",
+		"name": "Users API",
+		"description": "CRUD operations for Users API using Express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "44636165"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/users/id/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User By ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Rahul\",\n  \"role\": \"Senior Manager\",\n  \"active\": true\n}"
+				},
+				"url": "http://localhost:3000/users/id/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3000/users/id/4"
+			},
+			"response": []
+		}
+	]
+}

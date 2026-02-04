@@ -4,9 +4,11 @@ import userRouter from "./routes/user.route.js";
 
 const app = express();
 
-const PORT = 5000;
+const PORT = 3000;
 
-app.use("/user", userRouter);
+app.use(express.json());
+
+app.use("/users", userRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
