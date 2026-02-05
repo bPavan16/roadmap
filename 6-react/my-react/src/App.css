@@ -14,8 +14,18 @@ body {
 /* Container */
 .app-container {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   padding: 30px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.product-container{
+    display: flex;
+  gap: 20px;
+  padding: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+
 }

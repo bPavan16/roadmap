@@ -1,5 +1,6 @@
 import "./App.css";
 import Card from "./components/Card";
+import MyForm from "./components/MyForm";
 
 function App() {
   const All_products = [
@@ -10,11 +11,20 @@ function App() {
 
   return (
     <div className="app-container">
-      {All_products.map(({ id, name, description, price }) => (
-        <Card key={id} name={name} description={description} price={price} />
-      ))}
+      <div className="product-container">
+        {All_products.map(({ id, name, description, price }) => (
+          <Card key={id} name={name} description={description} price={price} />
+        ))}
+      </div>
+
+      <div className="app-container" style={{display:"flex", flexDirection:'column'}}>
+        <MyForm />
+      </div>
     </div>
   );
 }
 
+
+
 export default App;
+

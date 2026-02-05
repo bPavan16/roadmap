@@ -1,5 +1,5 @@
 
-import "./card.css";
+import "../styles/card.css";
 
 interface product {
     name:string,
