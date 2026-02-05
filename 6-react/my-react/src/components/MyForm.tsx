@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../styles/FormStyles.css'
+import "../styles/FormStyles.css";
 
 const MyForm = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +12,7 @@ const MyForm = () => {
     pincode: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
 
     setFormData({
@@ -21,7 +21,7 @@ const MyForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(formData);
   };
