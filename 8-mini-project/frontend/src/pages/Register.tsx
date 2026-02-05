@@ -52,9 +52,7 @@ const Register = () => {
           required
         />
 
-        <button
-          className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700"
-        >
+        <button className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700">
           Register
         </button>
       </form>
