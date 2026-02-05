@@ -1,9 +1,16 @@
 import express, { Request, Response } from "express";
 import authRoutes from "./routes/auth.routes.js";
+import cors from "cors";
 // import taskRoutes from "./routes/task.routes";
 
 const app = express();
 app.use(express.json());
+
+app.use(cors(
+    {
+        origin: "http://localhost:5173"
+    }
+))
 
 app.use("/auth", authRoutes);
 // app.use("/tasks", taskRoutes);
@@ -25,3 +32,5 @@ app.get('/health', (req: Request, res: Response) => {
 
 
 export default app;
+
+
