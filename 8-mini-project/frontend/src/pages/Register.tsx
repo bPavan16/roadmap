@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { registerUser } from "../api/auth.api";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      await registerUser(name, email, password);
+      await registerUser(name, email, password, isAdmin);
       alert("Registered successfully");
+      navigate("/login");
     } catch (err: any) {
       alert(err.response?.data?.message || "Registration failed");
     }
@@ -51,6 +55,17 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
+        {/* Admin Checkbox */}
+        <label className="flex items-center gap-2 mb-4 text-sm text-gray-700">
+          <input
+            type="checkbox"
+            checked={isAdmin}
+            onChange={(e) => setIsAdmin(e.target.checked)}
+            className="accent-green-600"
+          />
+          Register as Admin
+        </label>
 
         <button className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700">
           Register

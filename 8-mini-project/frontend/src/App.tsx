@@ -3,6 +3,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import Admin from "./pages/Admin";
+import UserTasks from "./pages/UserTask";
 
 function App() {
   return (
@@ -15,6 +17,22 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/tasks"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user/tasks"
+          element={
+            <ProtectedRoute>
+              <UserTasks />
             </ProtectedRoute>
           }
         />

@@ -6,16 +6,16 @@ export class Task extends Model {
   public id!: number;
   public title!: string;
   public description!: string;
-  public isCompleted!: string;
+  public isCompleted!: boolean;
 }
 
 Task.init(
   {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    isCompleted:{type:DataTypes.BOOLEAN, defaultValue:false}
+    isCompleted: { type: DataTypes.BOOLEAN, defaultValue: false },
   },
-  { sequelize, modelName: "task" }
+  { sequelize, modelName: "task" },
 );
 
 Task.belongsTo(User, { as: "assignedTo" });

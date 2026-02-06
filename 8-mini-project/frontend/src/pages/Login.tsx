@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { loginUser } from "../api/auth.api";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {saveUser} = useAuth();
+  const { saveUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +14,9 @@ const Login = () => {
     try {
       const data = await loginUser(email, password);
       saveUser(data.user, data.token);
-      console.log("Logged in user:", data.user);
+      // console.log("Logged in user:", data.user);
+
+      navigate("/dashboard");
     } catch (err: any) {
       alert(err.response?.data?.message || "Login failed");
     }
@@ -21,7 +24,10 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form className="bg-white p-8 rounded-xl shadow-lg w-96" onSubmit={handleSubmit}>
+      <form
+        className="bg-white p-8 rounded-xl shadow-lg w-96"
+        onSubmit={handleSubmit}
+      >
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
 
         <input
