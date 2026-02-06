@@ -127,3 +127,8 @@ Persist data using a database.
 
 ## Deliverable
 - React app with basic UI components
+
+## Docker and Kubernetes
+
+- Learnt basic docker and kubernetes commands
+- Installed all the required tools
