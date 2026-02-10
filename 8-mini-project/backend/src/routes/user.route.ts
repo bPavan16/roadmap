@@ -4,7 +4,7 @@ import { authMiddleware } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
-router.get("/", authMiddleware, getAllUsers);
+router.get("/", getAllUsers);
 router.get("/:userId", authMiddleware, getUserById);
 router.delete("/:userId", authMiddleware, deleteUser);
 

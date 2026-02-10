@@ -14,7 +14,7 @@ export const createTask = (
   });
 
 export const completeTask = (token: string, taskId: number) => {
-  api.patch(
+  return api.patch(
     `/tasks/${taskId}/complete`,
     {},
     {
@@ -28,13 +28,13 @@ export const updateTask = (
   taskId: number,
   data: { title?: string; description?: string; userId?: number },
 ) => {
-  api.put(`/tasks/${taskId}`, data, {
+  return api.put(`/tasks/${taskId}`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
 
 export const deleteTask = (token: string, taskId: number) => {
-  api.delete(`/tasks/${taskId}`, {
+  return api.delete(`/tasks/${taskId}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 };

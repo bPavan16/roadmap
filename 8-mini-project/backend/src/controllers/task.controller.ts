@@ -103,6 +103,7 @@ export const updateTask = async (req: any, res: Response) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    task.assignedToId = userId;
   }
 
   if (title) task.title = title;

@@ -5,9 +5,9 @@ import { AuthRequest } from "../middleware/auth.middleware.js";
 
 export const getAllUsers = async (req: AuthRequest, res: Response) => {
   try {
-    if (req.user.role !== "admin") {
-      return res.status(403).json({ message: "Admin only" });
-    }
+    // if (req.user.role !== "admin") {
+    //   return res.status(403).json({ message: "Admin only" });
+    // }
 
     const users = await User.findAll({
       attributes: { exclude: ["password"] },
@@ -17,7 +17,9 @@ export const getAllUsers = async (req: AuthRequest, res: Response) => {
       },
     });
 
-    res.json(users);
+    res.json({
+      data: users,
+    });
   } catch (error) {
     console.error("Get users error:", error);
     res.status(500).json({ message: "Failed to fetch users" });

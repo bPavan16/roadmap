@@ -12,7 +12,7 @@ interface User {
 export default function AdminTasks() {
   const { token } = useAuth();
   const [tasks, setTasks] = useState<any[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<any>([]);
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -34,7 +34,7 @@ export default function AdminTasks() {
   const loadUsers = async () => {
     try {
       const res = await getAllUsers(token!);
-      setUsers(res.data);
+      setUsers(res.data?.data ?? []);
     } catch (error: any) {
       console.error("Failed to load users:", error);
       alert(error.response?.data?.message || "Failed to load users");
