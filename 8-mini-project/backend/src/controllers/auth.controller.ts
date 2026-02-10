@@ -5,27 +5,64 @@ import { User } from "../model/user.model.js";
 import { JWT_SECRET } from "../config/jwt.js";
 
 export const register = async (req: Request, res: Response) => {
-  const { name, email, password, role } = req.body;
-  const hashed = await bcrypt.hash(password, 10);
+  try {
+    const { name, email, password, role } = req.body;
 
-  const user = await User.create({ name, email, password: hashed, role });
-  res.json(user);
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
+
+    const hashed = await bcrypt.hash(password, 10);
+    const user = await User.create({ 
+      name, 
+      email, 
+      password: hashed, 
+      role: role || "user" 
+    });
+
+    const userData = user.toJSON();
+    delete userData.password;
+
+    res.status(201).json({ message: "User registered successfully", user: userData });
+  } catch (error) {
+    console.error("Register error:", error);
+    res.status(500).json({ message: "Registration failed" });
+  }
 };
 
 export const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = await User.findOne({ where: { email } });
-  if (!user) return res.status(404).json({ message: "User not found" });
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
+    }
 
-  const valid = await bcrypt.compare(password, user.password);
-  if (!valid) return res.status(401).json({ message: "Invalid password" });
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-  const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET);
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
 
-  const userData = user.toJSON();
+    const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
-  delete userData.password;
+    const userData = user.toJSON();
+    delete userData.password;
 
-  res.json({ token, user: userData });
+    res.json({ token, user: userData });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Login failed" });
+  }
 };

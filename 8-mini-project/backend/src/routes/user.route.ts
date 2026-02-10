@@ -1,9 +1,11 @@
 import { Router } from "express";
-import { getAllUsers } from "../controllers/user.controller.js";
-import { auth } from "../middleware/auth.middleware.js";
+import { getAllUsers, getUserById, deleteUser } from "../controllers/user.controller.js";
+import { authMiddleware } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
-router.get("/", auth, getAllUsers);
+router.get("/", authMiddleware, getAllUsers);
+router.get("/:userId", authMiddleware, getUserById);
+router.delete("/:userId", authMiddleware, deleteUser);
 
 export default router;

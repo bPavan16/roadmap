@@ -2,7 +2,8 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const ProtectedRoute = ({ children }: any) => {
-  // console.log("ProtectedRoute rendered with children:", children);
+
+  // console.log("children:", children);
 
   const { token } = useAuth();
 

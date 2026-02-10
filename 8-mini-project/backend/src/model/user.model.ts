@@ -2,11 +2,11 @@ import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../config/database.js";
 
 export class User extends Model {
-  public id!: number;
-  public name!: string;
-  public email!: string;
-  public password!: string;
-  public role!: "admin" | "user";
+  declare id: number;
+  declare name: string;
+  declare email: string;
+  declare password: string;
+  declare role: "admin" | "user";
 }
 
 User.init(
