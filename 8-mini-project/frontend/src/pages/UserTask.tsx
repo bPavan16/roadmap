@@ -5,10 +5,19 @@ import { getTasks, completeTask } from "../api/task.api";
 export default function UserTasks() {
   const { token } = useAuth();
   const [tasks, setTasks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const loadTasks = async () => {
-    const res = await getTasks(token!);
-    setTasks(res.data);
+    try {
+      setLoading(true);
+      const res = await getTasks(token!);
+      setTasks(res.data);
+    } catch (error: any) {
+      console.error("Failed to load tasks:", error);
+      alert(error.response?.data?.message || "Failed to load tasks");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -16,15 +25,22 @@ export default function UserTasks() {
   }, []);
 
   const markComplete = async (taskId: number) => {
-    await completeTask(token!, taskId);
-    loadTasks();
+    try {
+      await completeTask(token!, taskId);
+      loadTasks();
+    } catch (error: any) {
+      console.error("Failed to complete task:", error);
+      alert(error.response?.data?.message || "Failed to complete task");
+    }
   };
 
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">My Tasks</h1>
 
-      {tasks.length === 0 && (
+      {loading && <p className="text-gray-500">Loading tasks...</p>}
+
+      {!loading && tasks.length === 0 && (
         <p className="text-gray-500">No tasks assigned.</p>
       )}
 

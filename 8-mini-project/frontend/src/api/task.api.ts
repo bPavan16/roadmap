@@ -13,7 +13,7 @@ export const createTask = (
     headers: { Authorization: `Bearer ${token}` },
   });
 
-export const completeTask = (token: string, taskId: number) =>
+export const completeTask = (token: string, taskId: number) => {
   api.patch(
     `/tasks/${taskId}/complete`,
     {},
@@ -21,3 +21,20 @@ export const completeTask = (token: string, taskId: number) =>
       headers: { Authorization: `Bearer ${token}` },
     },
   );
+};
+
+export const updateTask = (
+  token: string,
+  taskId: number,
+  data: { title?: string; description?: string; userId?: number },
+) => {
+  api.put(`/tasks/${taskId}`, data, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export const deleteTask = (token: string, taskId: number) => {
+  api.delete(`/tasks/${taskId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};

@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Admin from "./pages/Admin";
 import UserTasks from "./pages/UserTask";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route path="/" element={<Home />} /> 
+
       </Routes>
     </BrowserRouter>
   );
